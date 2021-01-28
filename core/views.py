@@ -26,12 +26,20 @@ def reg_done(request):
     nome_rec = request.GET.get('nome_register')
     email_rec = request.GET.get('email_register')
     senha_rec = request.GET.get('senha_register')
+    senha_rec1 = request.GET.get('senha_repeat_register')
 
     reg_usuario.nome = nome_rec
     reg_usuario.email = email_rec
     reg_usuario.senha = senha_rec
-    reg_usuario.save()
-    return render(request, 'core/reg_done.html',)
+
+    if senha_rec1 == senha_rec :
+        reg_usuario.save()
+        return render(request, 'core/reg_done.html', )
+
+    else:
+        context = {'msg': 'As senhas diferem'}
+        return render(request, 'core/register.html', context)
+
 
 def login_done(request):
 
