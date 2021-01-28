@@ -76,20 +76,20 @@
 <article class="card-body mx-auto" style="max-width: 400px;">
 	<p class="text-center">Insira seus dados, para logar no Ensina Code</p>
 
-	<form>
+	<form action="/login_done" method="get">
 	 <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="email_login" class="form-control" placeholder="E-mail" type="email">
+        <input name="email_login" class="form-control" placeholder="E-mail" type="email" maxlength="50">
     </div>
         <!-- form-group end.// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="senha_login" class="form-control" placeholder="Senha" type="password">
+        <input name="senha_login" class="form-control" placeholder="Senha" type="password" maxlength="10">
     </div>
         <!-- form-group// -->
         <div class="form-group">

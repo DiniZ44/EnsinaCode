@@ -70,12 +70,12 @@
 <article class="card-body mx-auto" style="max-width: 400px;">
 	<p class="text-center">Começe sua conta gratuita</p>
 
-	<form>
+	<form action="/reg_done" method="get">
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-        <input name="nome_register" class="form-control" placeholder="Nome" type="text">
+        <input name="nome_register" class="form-control" placeholder="Nome" type="text" >
     </div>
     <!-- form-group// -->
     <div class="form-group input-group">
@@ -90,13 +90,13 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="senha_register" class="form-control" placeholder="Senha" type="password">
+        <input name="senha_register" class="form-control" placeholder="Senha" type="password" maxlength="10">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="senha_repeat_register" class="form-control" placeholder="Confirmar Senha" type="password">
+        <input name="senha_repeat_register" class="form-control" placeholder="Confirmar Senha" type="password " maxlength="10">
     </div> <!-- form-group// -->
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Criar Conta  </button>
