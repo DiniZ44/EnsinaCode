@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
+from .forms import *
 
 def index(request):
     return render(request, 'core/index.html')
@@ -12,13 +13,24 @@ def login(request):
     return render(request, 'core/login.html')
 
 def linguagens(request):
-    return render(request, 'core/linguagens.html')
+    data = {}
+    data['linguagens'] =Linguagem.objects.all()
+    return render(request, 'core/linguagens.html', data)
 
 def ranking(request):
-    return render(request, 'core/ranking.html')
+    data = {}
+    data['ranking'] = RankingForm.objects.all()
+    return render(request, 'core/ranking.html', data)
 
 def questions(request):
-    return render(request, 'core/questions.html')
+    data = {}
+    data['questions'] = PerguntasForm.objects.all()
+    return render(request, 'core/questions.html',data)
+
+def alternative(request):
+    data = {}
+    data['alternatives'] = Alternativas.objects.all()
+    return render(request, 'core/questions.html', data)
 
 def reg_done(request):
     reg_usuario = Usuario()
