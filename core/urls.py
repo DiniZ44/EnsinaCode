@@ -9,4 +9,7 @@ urlpatterns = [
     path('reg_done/', views.reg_done),
     path('login_done/', views.login_done),
 
+
+    path('questionespecific/<int:pk>/', views.linguagen_especific, name='url_perguntaDaLinguagem'),
+
 ]

@@ -29,6 +29,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static 'core/assets/css/style.css'%}" rel="stylesheet">
+    {% csrf_token %}
 
 </head>
 
@@ -134,7 +135,7 @@
                 </svg>
                 <i class="bx bx-detail"></i>
               </div>
-              <h4><a href="">{{ linguagen.nome }}</a></h4>
+              <h4><a href="{% url 'url_perguntaDaLinguagem' linguagen.id %}">{{ linguagen.nome }}</a></h4>
               <p> {{ linguagen.descricao }} </p>
 
             </div>

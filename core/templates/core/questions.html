@@ -45,54 +45,92 @@
 
 
   <section> </section>
+    {% csrf_token %}
 
 
 
-  <section id="login" class="login">
+  <div class="container">
 
-      <div class="container">
+    <div class="section-title">
+                  <h2> {{ linguagen.nome }}</h2>
+              </div>
 
-        <div class="section-title">
-          <h2>{{ linguagen.nome }}</h2>
-        </div>
-          </div>
-
-      <center>
-          <div style="padding-left:30px;">
-
-              {% for question in questions %}
-                  <table>
-                  <tr>
-                      <td>
-                          {{ question.id }}   {{ question.descricao }}
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                            <input type="radio" value="">
-                      </td>
-                  </tr>
-                  </table>
-
-
-              {% endfor %}
-
-
-          </div>
-      </center>
-
-
-
-</section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#but1").click(function(){
+                $(".rb").show();
+                $(".rb").attr("disabled",true);
+            });
+        });
+        function getanswer(){
+            document.getElementById("UserAnswers").innerHTML="";
+            var e=document.getElementsByTagName('input');
+            for(i=0;i<=e.length;i++)
+            {
+                if(e[i].type=="radio")
+                {
+                    if(e[i].checked)
+                    {
+                        document.getElementById("UserAnswers").innerHTML="Q" +e[i].name+" Você assinalou: " +e[i].value +"<br/>";
+                    }
+                }
+            }
+        }
+    </script>
+      <hr>
+      <div class="card bg-light">
+          <article class="card-body mx-auto" style="max-width: 700px;">
+              <p class="text-center">{{ linguagen.descricao}} Fundada por: {{ linguagen.fundador}} no ano de {{ linguagen.ano }}</p>
+          <p class="text-center" style="font-style: italic"><b>Questionário </b> </p>
+              <div class="container">
 
 
-<section> </section>
+                      <div style="padding-left: 10px;">
+                          {% for question in perguntas %}
+                              <table>
+                                  <tr>
+                                      <td>{{ question.id }} )  {{ question.descricao }} </td>
+                                  </tr>
+                                  <tr>
+                                      <td> <input type="radio" id="opcao_1" class="rb" name="{{ question.id }}" value="{{question.opcao_1}}"> {{question.opcao_1}}</td>
+                                  </tr>
+
+                                  <tr>
+                                      <td> <input type="radio" id="opcao_2" class="rb" name="{{ question.id }}" value="{{question.opcao_2}}"> {{question.opcao_2}}</td>
+                                  </tr>
+
+                                  <tr>
+                                      <td> <input type="radio" id="opcao_3" class="rb" name="{{ question.id }}" value="{{question.opcao_3}}"> {{question.opcao_3}}</td>
+                                  </tr>
+                                   <hr/>
+
+                                  <tr>
+                                      <td> <label id="correta" class="rb"  style=" display: none; color: green"> <b>A resposta correta é:   {{ question.correta }}</b></label></td>
+                                  </tr>
+                              </table>
+                          {% endfor %}
+                          <hr/>
+                      <center> <input type="submit" value="Validar" id="but1" onclick="getanswer();"/></center>
+                            <hr/>
+                          <b id="UserAnswers"></b>
+
+                      <hr/>
+                      </div>
+
+              </div>
+
+
+
+
+
+</article>
+</div> <!-- card.// -->
+
+</div>
+
 
 <section></section>
-
-
-
-
 
 
 <!-- ======= Footer ======= -->

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
 from .forms import *
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     data = {}
@@ -13,7 +14,6 @@ def register(request):
 
 def login(request):
     return render(request, 'core/login.html')
-
 
 def reg_done(request):
     reg_usuario = Usuario()
@@ -39,7 +39,6 @@ def reg_done(request):
         context = {'msg': 'As senhas diferem'}
         return render(request, 'core/register.html', context)
 
-
 def login_done(request):
 
         if Usuario.objects.filter(email= request.GET.get('email_login') ,senha=request.GET.get('senha_login')).exists() :
@@ -53,4 +52,12 @@ def login_done(request):
             context = {'msg': 'Email ou senha incorretos'}
             return render(request, 'core/login.html', context)
 
+def linguagen_especific(request, pk):
+    data ={}
+    linguagen = Linguagem.objects.get(pk=pk)
+    pergunta = Perguntas.objects.filter(linguagem__pk = pk)
 
+    data['linguagen'] = linguagen
+    data['perguntas'] = pergunta
+
+    return render(request, 'core/questions.html',data)

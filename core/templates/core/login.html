@@ -77,6 +77,8 @@
 	<p class="text-center">Insira seus dados, para logar no Ensina Code</p>
 
 	<form action="/login_done" method="get">
+        {% csrf_token %}
+
 	 <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
