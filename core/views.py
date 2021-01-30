@@ -4,7 +4,9 @@ from .models import *
 from .forms import *
 
 def index(request):
-    return render(request, 'core/index.html')
+    data = {}
+    data['linguagens'] = Linguagem.objects.all()
+    return render(request, 'core/index.html',data)
 
 def register(request):
     return render(request, 'core/register.html')
@@ -12,25 +14,6 @@ def register(request):
 def login(request):
     return render(request, 'core/login.html')
 
-def linguagens(request):
-    data = {}
-    data['linguagens'] =Linguagem.objects.all()
-    return render(request, 'core/linguagens.html', data)
-
-def ranking(request):
-    data = {}
-    data['ranking'] = RankingForm.objects.all()
-    return render(request, 'core/ranking.html', data)
-
-def questions(request):
-    data = {}
-    data['questions'] = PerguntasForm.objects.all()
-    return render(request, 'core/questions.html',data)
-
-def alternative(request):
-    data = {}
-    data['alternatives'] = Alternativas.objects.all()
-    return render(request, 'core/questions.html', data)
 
 def reg_done(request):
     reg_usuario = Usuario()
@@ -51,8 +34,6 @@ def reg_done(request):
     if senha_rec1 == senha_rec :
         reg_usuario.save()
         return render(request, 'core/reg_done.html', )
-
-
 
     else:
         context = {'msg': 'As senhas diferem'}
