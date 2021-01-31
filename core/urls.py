@@ -8,8 +8,10 @@ urlpatterns = [
     path('register/', views.register),
     path('reg_done/', views.reg_done),
     path('login_done/', views.login_done),
-
+    path('profile/', views.profile),
+    path('logado/', views.index_logado),
 
     path('questionespecific/<int:pk>/', views.linguagen_especific, name='url_perguntaDaLinguagem'),
+
 
 ]

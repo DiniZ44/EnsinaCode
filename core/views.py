@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     data = {}
     data['linguagens'] = Linguagem.objects.all()
-    return render(request, 'core/index.html',data)
+
+    return render(request, 'core/index_login.html',data)
 
 def register(request):
     return render(request, 'core/register.html')
@@ -40,9 +41,12 @@ def reg_done(request):
         return render(request, 'core/register.html', context)
 
 def login_done(request):
+        data = {}
+        data['linguagens'] = Linguagem.objects.all()
+
 
         if Usuario.objects.filter(email= request.GET.get('email_login') ,senha=request.GET.get('senha_login')).exists() :
-            return render(request, 'core/index.html',)
+            return render(request, 'core/index.html',data)
 
         if request.GET.get('email_login') == "" or request.GET.get('senha_login') == "":
             context = {'msg': 'Email ou Senha vazio'}
@@ -61,3 +65,11 @@ def linguagen_especific(request, pk):
     data['perguntas'] = pergunta
 
     return render(request, 'core/questions.html',data)
+
+def profile(request):
+    return render(request, 'core/profile.html',)
+
+def index_logado(request):
+    data = {}
+    data['linguagens'] = Linguagem.objects.all()
+    return  render(request, 'core/index.html',data)

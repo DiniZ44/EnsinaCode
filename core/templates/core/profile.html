@@ -3,6 +3,7 @@
 
 <head>
     {% load static %}
+    {% csrf_token %}
 
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -33,30 +34,24 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="/">Ensina Code</a></h1>
+      <h1 class="logo mr-auto"><a href="/logado">Ensina Code</a></h1>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="/">Início</a></li>
+          <li class="active"><a href="/logado">Início</a></li>
           </ul>
       </nav>
-      <a href="#login" class="get-started-btn scrollto">Login</a>
+      <a href="" class="get-started-btn scrollto">Perfil</a>
     </div>
   </header>
 
-
   <section>
-
-
   </section>
-
-
 
   <section id="login" class="login">
 
       <div class="container">
-
         <div class="section-title">
-          <h2>Login</h2>
+          <h2>Perfil</h2>
         </div>
 
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -74,34 +69,41 @@
 
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
-	<p class="text-center">Insira seus dados, para logar no Ensina Code</p>
+	<p class="text-center">Meus dados</p>
 
-	<form action="/login_done" method="get">
-        {% csrf_token %}
-
-	 <!-- form-group// -->
+	<form action="/reg_done" method="get">
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="nome_register" class="form-control" placeholder="Nome" type="text" >
+    </div>
+    <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="email_login" class="form-control" placeholder="E-mail" type="email" maxlength="50" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-        <div class="validate"></div>
+        <input name="email_register" class="form-control" placeholder="E-mail" type="email">
     </div>
-        <!-- form-group end.// -->
+    <!-- form-group// -->
+     <!-- form-group end.// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="senha_login" class="form-control" placeholder="Senha" type="password" maxlength="10" data-rule="minlen:4" data-msg="Please enter at least 6 chars">
-        <div class="validate"></div>
-    </div>
-
-        <center> <label class="text-danger"> {{ msg }}  </label></center>
-        <!-- form-group// -->
-        <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"> Enviar  </button>
+        <input name="senha_register" class="form-control" placeholder="Senha" type="password" maxlength="10">
     </div> <!-- form-group// -->
-    <p class="text-center">Não possui uma conta? <a href="/register">Criar </a> </p>
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input name="senha_repeat_register" class="form-control" placeholder="Confirmar Senha" type="password " maxlength="10">
+    </div> <!-- form-group// -->
+        <center> <label class="text-danger"> {{ msg }}  </label></center>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Atualizar </button>
+    </div> <!-- form-group// -->
+
 </form>
 </article>
 </div> <!-- card.// -->
@@ -110,6 +112,7 @@
 <!--container end.//-->
 
 </div>
+
 
 </section>
 
@@ -148,28 +151,13 @@
 }
 </style>
 
-
-<section>
-
-
-</section>
-
-
   <section>
 
+  </section>
 
-</section>
+    <section>
 
-
-
-
-
-
-
-
-
-
-
+  </section>
 
 <!-- ======= Footer ======= -->
   <footer id="footer">
