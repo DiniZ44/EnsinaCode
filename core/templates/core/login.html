@@ -77,15 +77,16 @@
 <article class="card-body mx-auto" style="max-width: 400px;">
 	<p class="text-center">Insira seus dados, para logar no Ensina Code</p>
 
-	<form action="/login_done" method="get">
+	<form action="/login_done" role="form" method="get">
         {% csrf_token %}
 
 	 <!-- form-group// -->
+
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="email_login" class="form-control" placeholder="E-mail" type="email" maxlength="50" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+        <input name="email_login" id= "email_login" class="form-control" placeholder="E-mail" type="email" maxlength="50" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
         <div class="validate"></div>
     </div>
         <!-- form-group end.// -->
@@ -93,13 +94,16 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="senha_login" class="form-control" placeholder="Senha" type="password" maxlength="10" data-rule="minlen:4" data-msg="Please enter at least 6 chars">
+        <input name="senha_login" id="senha_login" class="form-control" placeholder="Senha" type="password" maxlength="10" data-rule="minlen:4" data-msg="Please enter at least 6 chars">
         <div class="validate"></div>
     </div>
 
         <center> <label class="text-danger"> {{ msg }}  </label></center>
         <!-- form-group// -->
         <div class="form-group">
+            <div class="mb-3">
+                <div class="error-message"></div>
+              </div>
         <button type="submit" class="btn btn-primary btn-block"> Enviar  </button>
     </div> <!-- form-group// -->
     <p class="text-center">Não possui uma conta? <a href="/register">Criar </a> </p>

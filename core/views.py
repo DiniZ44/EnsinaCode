@@ -73,3 +73,5 @@ def index_logado(request):
     data = {}
     data['linguagens'] = Linguagem.objects.all()
     return  render(request, 'core/index.html',data)
+
+
